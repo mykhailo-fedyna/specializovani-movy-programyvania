@@ -5,14 +5,14 @@ class Elektronika(Tovar):
         super().__init__(name, price, tags, specs)
         self.warranty_months = int(warranty_months)
 
-    def extend_warranty(self, months: int) -> None:
+    def extend_warranty(self, months: int):
         if months <= 0:
             raise ValueError("months має бути додатнім")
         old = self.warranty_months
         self.warranty_months += months
         print(f"Гарантію продовжено: {old} міс. -> {self.warranty_months} міс.")
 
-    def display_info(self) -> str:
+    def display_info(self):
         base = super().display_info()
         return base + f"\nГарантія: {self.warranty_months} міс."
 

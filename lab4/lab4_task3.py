@@ -6,7 +6,7 @@ class Manufacturer:
         self.country = country
         self.contact = contact
 
-    def full_info(self) -> str:
+    def full_info(self):
         contact_part = f", контакт: {self.contact}" if self.contact else ''
         return f"{self.name} ({self.country}){contact_part}"
 
@@ -19,10 +19,10 @@ class ElektronikaWithManufacturer(Elektronika):
         super().__init__(name, price, tags, specs, warranty_months)
         self.manufacturer = manufacturer
 
-    def show_manufacturer(self) -> str:
+    def show_manufacturer(self):
         return self.manufacturer.full_info()
 
-    def display_info(self) -> str:
+    def display_info(self):
         base = super().display_info()
         return base + f"\nВиробник: {self.show_manufacturer()}"
 

@@ -7,33 +7,32 @@ class Tovar:
         self.tags = tags or []
         self.specs = specs or {}
 
-    def apply_discount(self, percent: float) -> None:
+    def apply_discount(self, percent: float):
         if percent < 0:
             raise ValueError("percent не може бути від'ємним")
         old = self.price
         self.price = round(self.price * (1 - percent / 100), 2)
         print(f"Знижка {percent}% застосована: {old} -> {self.price}")
 
-    def increase_price(self, amount: float) -> None:
+    def increase_price(self, amount: float):
         self.price = round(self.price + amount, 2)
 
-    def add_tag(self, tag: str) -> None:
+    def add_tag(self, tag: str):
         if tag not in self.tags:
             self.tags.append(tag)
 
-    def remove_tag(self, tag: str) -> None:
+    def remove_tag(self, tag: str):
         if tag in self.tags:
             self.tags.remove(tag)
 
-    def update_spec(self, key: str, value: str) -> None:
+    def update_spec(self, key: str, value: str):
         self.specs[key] = value
 
-    def remove_spec(self, key: str) -> None:
+    def remove_spec(self, key: str):
         if key in self.specs:
             del self.specs[key]
 
-    def display_info(self) -> str:
-        """Повернути зручний для читання опис товару."""
+    def display_info(self):
         lines = [f"Товар: {self.name}", f"Ціна: {self.price} грн"]
         if self.tags:
             lines.append("Теги: " + ", ".join(self.tags))
